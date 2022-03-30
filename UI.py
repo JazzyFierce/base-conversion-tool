@@ -24,16 +24,26 @@ class UI:
 
                     match int(base_choice):
                         case 1:
-                            num_to_convert = float(input('Enter the decimal number to convert: '))
-                            print(f'Decimal number: {num_to_convert}')
-                            for base_name, base in self._common_bases.items():
-                                print(f'{base_name}: {self.converter.dec_to_any(num_to_convert, base)}')
+                            while True:
+                                try:
+                                    num_to_convert = float(input('Enter the decimal number to convert: '))
+                                    print(f'Decimal number: {num_to_convert}')
+                                    for base_name, base in self._common_bases.items():
+                                        print(f'{base_name}: {self.converter.dec_to_any(num_to_convert, base)}')
+                                    break
+                                except ValueError:
+                                    continue
                             break
                         case 2:
-                            num_to_convert = float(input('Enter the decimal number to convert: '))
-                            custom = int(input('Enter your base (decimal format): '))
-                            print(f'Decimal number: {num_to_convert}')
-                            print(f'Base {custom} number: {self.converter.dec_to_any(num_to_convert, custom)}')
+                            while True:
+                                try:
+                                    num_to_convert = float(input('Enter the decimal number to convert: '))
+                                    custom = int(input('Enter your base (decimal format): '))
+                                    print(f'Decimal number: {num_to_convert}')
+                                    print(f'Base {custom} number: {self.converter.dec_to_any(num_to_convert, custom)}')
+                                    break
+                                except ValueError:
+                                    continue
                             break
                         case 3:
                             return
