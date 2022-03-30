@@ -27,16 +27,16 @@ class ConversionFunctions:
         # this isn't ideal but the program will go into a death loop otherwise
         # can you call them DECIMAL points if it's not in decimal base? Hmm...
 
-        try:
-            temp = str(converted_float[15])
+        if base <= 36:
+            try:
+                temp = converted_float[15]
 
-            if alpha_num.index(temp) >= math.ceil(base / 2):  # 0 1 2 3 4 5 6 7 8 9
-                converted_float[14] = int(alpha_num[alpha_num.index(str(converted_float[14])) + 1])
-            converted_float.pop(15)
-        except IndexError:
-            pass
+                if temp >= math.ceil(base / 2):  # 0 1 2 3 4 5 6 7 8 9
+                    converted_float[14] = int(converted_float[14] + 1)
+                converted_float.pop(15)
+            except IndexError:
+                pass
 
-        if base <= 37:
             for num in range(0, len(converted_int)):
                 if converted_int[num] > 9:
                     converted_int[num] = alpha_num[converted_int[num]]
@@ -49,6 +49,13 @@ class ConversionFunctions:
                 converted_int.append('.')
             return "".join([str(x) for x in converted_int + converted_float])
         else:
+            try:
+                temp = converted_float[15]
+                if temp >= math.floor(base/2):
+                    converted_float[14] += 1
+                converted_float.pop(15)
+            except IndexError:
+                pass
             return " ".join([str(x) for x in converted_int + converted_float])
 
     def any_to_dec_v1(self, base, num):  # converts to decimal with digits past 9 notated with letters
