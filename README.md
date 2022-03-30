@@ -11,4 +11,6 @@ Version History:
 
 -dec_to_any_v1 changed to only be precise to 15 digits. This is not ideal, but keeps the program from entering an infinite calculation loop. Rounding is considered
 
+-Added functionality for converting to bases above 36
+
 
