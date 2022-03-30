@@ -4,6 +4,7 @@ A tool to convert decimal numbers to non-decimal bases and vice-versa. Excutable
 Last Modified: 3-29-2022
 
 Version History:
+
 3-27-2022: Implemented basic functionality, assuming valid inputs.
 
 3-29-2022: Base Conversion Tool - now with completely class-based implementation!
