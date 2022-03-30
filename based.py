@@ -30,13 +30,13 @@ class ConversionFunctions:
         try:
             temp = str(converted_float[15])
 
-            if alpha_num.index(temp) >= math.ceil(base/2):  # 0 1 2 3 4 5 6 7 8 9
+            if alpha_num.index(temp) >= math.ceil(base / 2):  # 0 1 2 3 4 5 6 7 8 9
                 converted_float[14] = int(alpha_num[alpha_num.index(str(converted_float[14])) + 1])
             converted_float.pop(15)
         except IndexError:
             pass
 
-        try:
+        if base <= 37:
             for num in range(0, len(converted_int)):
                 if converted_int[num] > 9:
                     converted_int[num] = alpha_num[converted_int[num]]
@@ -48,8 +48,8 @@ class ConversionFunctions:
             if len(converted_float):
                 converted_int.append('.')
             return "".join([str(x) for x in converted_int + converted_float])
-        except IndexError:
-            return 'Sorry, this program currently does not support above base 37'
+        else:
+            return " ".join([str(x) for x in converted_int + converted_float])
 
     def any_to_dec_v1(self, base, num):  # converts to decimal with digits past 9 notated with letters
         digits = list(num)
@@ -71,7 +71,8 @@ class ConversionFunctions:
             dec_num += digits[num] * (base ** num)
         return dec_num
 
-    def any_to_dec_v2(self, base, num):  # user input consists of decimal numbers separated by spaces
+    @staticmethod  # this isn't really necessary, but IDEs are annoying sometimes
+    def any_to_dec_v2(base, num):  # user input consists of decimal numbers separated by spaces
         digits = num.split()
 
         try:
