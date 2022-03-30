@@ -1,8 +1,9 @@
-from UI import run
+from UI import UI
 
 
 def main():
-    run()
+    my_UI = UI()
+    my_UI.run()
 
 
 if __name__ == "__main__":
