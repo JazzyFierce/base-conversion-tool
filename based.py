@@ -56,6 +56,9 @@ class ConversionFunctions:
                 converted_float.pop(15)
             except IndexError:
                 pass
+
+            if len(converted_float):
+                converted_int.append(" . ")
             return " ".join([str(x) for x in converted_int + converted_float])
 
     def any_to_dec_v1(self, base, num):  # converts to decimal with digits past 9 notated with letters
